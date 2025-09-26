@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | AI-Powered</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="builder-header">
+        <div class="logo">ResumeCraft<span>AI</span></div>
+        <div class="progress-steps">
+            <span class="step active">1. Information</span>
+            <span class="step">2. Experience</span>
+            <span class="step">3. Education</span>
+            <span class="step">4. Skills</span>
+        </div>
+    </header>
+
+    <main class="builder-container">
+        <aside class="resume-preview">
+            <div class="preview-container" id="resumePreview">
+                <h2 id="previewName">Your Name</h2>
+                <p id="previewContact">Email | Phone | Location</p>
+                <h3>PROFESSIONAL SUMMARY</h3>
+                <p id="previewSummary">Experienced professional seeking new opportunities...</p>
+                <h3>WORK EXPERIENCE</h3>
+                <div id="previewExperience"></div>
+                <h3>EDUCATION</h3>
+                <div id="previewEducation"></div>
+                <h3>SKILLS</h3>
+                <div id="previewSkills"></div>
+            </div>
+            <button class="btn-secondary" id="downloadBtn">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </aside>
+
+        <section class="form-section">
+            <form id="resumeForm" class="multi-step-form">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" data-step="1">
+                    <h2>Personal Information</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone*</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Location</label>
+                        <input type="text" id="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" rows="4"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-next">Next: Experience <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Experience -->
+                <div class="form-step" data-step="2">
+                    <h2>Work Experience</h2>
+                    <div id="experienceFields">
+                        <div class="experience-entry">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Job Title*</label>
+                                    <input type="text" class="jobTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company*</label>
+                                    <input type="text" class="company" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Start Date*</label>
+                                    <input type="month" class="startDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date (or Present)</label>
+                                    <input type="month" class="endDate">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" class="currentJob"> Currently working here
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description*</label>
+                                <textarea class="jobDescription" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" id="addExperience">
+                        <i class="fas fa-plus"></i> Add Another Position
+                    </button>
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button type="button" class="btn-next">Next: Education <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Education -->
+                <div class="form-step" data-step="3">
+                    <h2>Education</h2>
+                    <div id="educationFields">
+                        <div class="education-entry">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Degree*</label>
+                                    <input type="text" class="degree" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Institution*</label>
+                                    <input type="text" class="institution" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Graduation Year*</label>
+                                    <input type="month" class="graduationDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Field of Study</label>
+                                    <input type="text" class="fieldOfStudy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" id="addEducation">
+                        <i class="fas fa-plus"></i> Add Another Education
+                    </button>
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button type="button" class="btn-next">Next: Skills <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Skills -->
+                <div class="form-step" data-step="4">
+                    <h2>Skills & Competencies</h2>
+                    <div id="skillsFields">
+                        <div class="form-group">
+                            <label>Technical Skills (comma separated)</label>
+                            <textarea id="technicalSkills" placeholder="e.g., JavaScript, Python, React"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Soft Skills (comma separated)</label>
+                            <textarea id="softSkills" placeholder="e.g., Leadership, Communication"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button type="button" id="generateResumeBtn" class="btn-generate">Generate Resume <i class="fas fa-file-download"></i></button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="ai-integration.js"></script>
+</body>
+</html>
